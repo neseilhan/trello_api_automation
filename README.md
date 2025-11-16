@@ -1,10 +1,10 @@
-# 🧪 Trello API Automation Framework
+# Trello API Automation Framework
 Trello REST API üzerinde uçtan uca CRUD işlemlerini otomatik olarak test etmek için geliştirilmiş bir **Java + Rest Assured** tabanlı API test otomasyon projesidir.
 
 Bu framework; board, list ve card işlemlerini kapsar, temiz bir test mimarisi, logging, random data üreteci, JSON seri/deserilazition ve yapılandırılabilir config yönetimi içerir.
 
 
-## 🛠 Teknolojiler
+## Teknolojiler
 Bu proje aşağıdaki teknolojiler kullanılarak geliştirilmiştir:
 
 - **Java 21**
@@ -17,7 +17,7 @@ Bu proje aşağıdaki teknolojiler kullanılarak geliştirilmiştir:
 
 ---
 
-## ✨ Özellikler
+## Özellikler
 
 ### ✔ Board / List / Card CRUD testleri
 - Create Board
