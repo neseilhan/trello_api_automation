@@ -1,14 +1,9 @@
-package org.example.config;
+package neseilhan.dev.config;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * bu sınıfta singleton tasarım deseni kullanılarak
- * config.properties dosyasından
- * trello API bilgileri okunur.
- */
 public class ConfigManager {
     private static ConfigManager instance;
     private Properties properties;
