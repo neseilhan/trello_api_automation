@@ -24,7 +24,7 @@ public class RandomUtils {
 
     public static <T> T getRandomElement(List<T> list) {
         if (list == null || list.isEmpty()) {
-            throw new IllegalArgumentException("List cannot be null or empty");
+            throw new IllegalArgumentException("TrelloList cannot be null or empty");
         }
         return list.get(random.nextInt(list.size()));
     }
@@ -50,6 +50,6 @@ public class RandomUtils {
     }
 
     public static String generateRandomListName() {
-        return "Test List " + generateRandomString(5) + " " + System.currentTimeMillis();
+        return "Test TrelloList " + generateRandomString(5) + " " + System.currentTimeMillis();
     }
 }

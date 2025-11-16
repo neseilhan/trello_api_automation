@@ -1,14 +1,30 @@
 package neseilhan.dev.entities;
 
-public class List {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
+public class TrelloList {
+
+    @JsonProperty("id")
     private String id;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("idBoard")
     private String idBoard;
+
+    @JsonProperty("pos")
     private int pos;
 
-    public List() {}
+    public TrelloList() {}
 
-    public List(String name, String idBoard) {
+    public TrelloList(String name, String idBoard) {
         this.name = name;
         this.idBoard = idBoard;
     }

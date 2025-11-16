@@ -1,21 +1,23 @@
-package tests;
 
 import io.restassured.response.Response;
 import neseilhan.dev.entities.Board;
 import neseilhan.dev.entities.Card;
-import neseilhan.dev.entities.List;
+import neseilhan.dev.entities.TrelloList;
 import neseilhan.dev.utils.RandomUtils;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TrelloApiTest extends tests.BaseTest {
+public class TrelloApiTest extends BaseTest {
 
-    private String boardId;
-    private String listId;
-    private String card1Id;
-    private String card2Id;
+    private static String boardId;
+    private static String listId;
+    private static String card1Id;
+    private static String card2Id;
+    private static String organizationId;
+
+
     private java.util.List<Board> boards = new ArrayList<>();
 
     @Test
@@ -24,15 +26,19 @@ public class TrelloApiTest extends tests.BaseTest {
     public void createBoardTest() {
         logTestStep("1. Trello üzerinde bir board oluşturuluyor");
 
+
         String boardName = RandomUtils.generateRandomBoardName();
         logTestInfo("Board Name: " + boardName);
 
         Response response = boardPage.createBoard(boardName);
+        System.out.println("BOARD RESPONSE: " + response.getBody().asString());
+
 
         Assertions.assertEquals(200, response.getStatusCode(), "Board oluşturma başarısız!");
 
         Board createdBoard = boardPage.extractBoardFromResponse(response);
         boardId = createdBoard.getId();
+        organizationId = createdBoard.getOrganizationId();
 
         Assertions.assertNotNull(boardId, "Board ID null olamaz!");
         Assertions.assertEquals(boardName, createdBoard.getName(), "Board ismi eşleşmiyor!");
@@ -53,7 +59,7 @@ public class TrelloApiTest extends tests.BaseTest {
 
         Assertions.assertEquals(200, response.getStatusCode(), "Liste oluşturma başarısız!");
 
-        List list = listPage.extractListIdFromResponse(response);
+        TrelloList list = listPage.extractListIdFromResponse(response);
         listId = list.getId();
 
         Assertions.assertNotNull(listId, "Liste ID null olamaz!");

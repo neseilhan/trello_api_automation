@@ -11,11 +11,12 @@ public class ApiEndpoints {
     public static final String CARDS = "/cards";
     public static final String CARD_BY_ID = "/cards/{id}";
 
-    // List endpoints
+    // TrelloList endpoints
     public static final String BOARD_LISTS = "/boards/{id}/lists";
     public static final String LIST= "/lists";
     public static final String LIST_BY_ID = "/lists/{id}";
-    public static final String CARD_LISTS = "/list/{id}/cards";
+    public static final String CARD_LISTS = "/lists/{id}/cards";
+
 
     public static final String AUTH_PARAMS = "key={apiKey}&token={apiToken}";
 

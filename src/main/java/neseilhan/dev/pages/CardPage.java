@@ -3,6 +3,7 @@ package neseilhan.dev.pages;
 import io.restassured.response.Response;
 import neseilhan.dev.config.ApiEndpoints;
 import neseilhan.dev.entities.Card;
+import neseilhan.dev.utils.ApiUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,15 +20,15 @@ public class CardPage extends BasePage{
 
         Response response = getRequest()
                 .body(requestBody)
-                .post(ApiEndpoints.CARDS);
+                .post(ApiEndpoints.CARDS); // Sadece endpoint
 
         logResponse(response);
         return response;
     }
 
-    public Response createCard(Card card) {
-        return createCard(card.getName(), card.getListId());
-    }
+//    public Response createCard(Card card) {
+//        return createCard(card.getName(), card.getListId());
+//    }
 
     public Response getCardById(String cardId) {
         logInfo("Getting card with ID: " + cardId);

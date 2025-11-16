@@ -1,4 +1,3 @@
-package tests;
 
 import neseilhan.dev.config.ConfigManager;
 import neseilhan.dev.pages.BoardPage;

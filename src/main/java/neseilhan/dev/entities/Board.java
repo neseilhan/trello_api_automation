@@ -6,15 +6,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Getter
-@Setter
-
+//@Getter
+//@Setter
 public class Board {
     @JsonProperty("id")
     private String id;
 
     @JsonProperty("name")
     private String name;
+
+    @JsonProperty("idOrganization")
+    private String organizationId;
+
 
     public Board() {}
 
@@ -38,7 +41,12 @@ public class Board {
         this.name = name;
     }
 
-
+    public String getOrganizationId() {
+        return organizationId;
+    }
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId;
+    }
 
     @Override
     public String toString() {

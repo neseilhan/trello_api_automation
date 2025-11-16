@@ -2,13 +2,15 @@ package neseilhan.dev.pages;
 
 import io.restassured.response.Response;
 import neseilhan.dev.config.ApiEndpoints;
-import neseilhan.dev.entities.List;
+import neseilhan.dev.entities.TrelloList;
+import neseilhan.dev.utils.ApiUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ListPage extends  BasePage{
-    public List extractListIdFromResponse(Response response) {
+public class ListPage extends BasePage {
+
+    public TrelloList extractListIdFromResponse(Response response) {
         if (response.getStatusCode() != 200) {
             logError("Failed to create list. Status code: " + response.getStatusCode());
             return null;
@@ -18,14 +20,13 @@ public class ListPage extends  BasePage{
         String listName = response.jsonPath().getString("name");
         String boardId = response.jsonPath().getString("idBoard");
 
-        List list = new List();
+        TrelloList list = new TrelloList();
         list.setId(listId);
         list.setName(listName);
         list.setIdBoard(boardId);
 
-        logInfo("List created with ID: " + listId + ", Name: " + listName + ", Board ID: " + boardId);
+        logInfo("TrelloList created with ID: " + listId + ", Name: " + listName + ", Board ID: " + boardId);
         return list;
-
     }
 
     public Response createList(String listName, String boardId) {
@@ -43,15 +44,16 @@ public class ListPage extends  BasePage{
         return response;
     }
 
+
+
     public Response getCardsInAList(String listId) {
         logInfo("Getting cards for list ID: " + listId);
 
-        Response response = getRequest()
+        Response response = ApiUtils.getAuthenticatedRequest()
                 .pathParam("id", listId)
                 .get(ApiEndpoints.CARD_LISTS);
 
         logResponse(response);
         return response;
     }
-
 }
